@@ -7,12 +7,14 @@ public class SnakeScript : MonoBehaviour
 
     private Vector2 _direction = Vector2.up;
     private Vector3 unroundedPosition;
+    private Vector3 originalPos;
     public float speed;
 
     public void Start()
     {
          Time.fixedDeltaTime = 0.02f;
-        unroundedPosition = transform.position;
+          unroundedPosition = transform.position;
+         originalPos = transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -41,10 +43,15 @@ public class SnakeScript : MonoBehaviour
         MoveOne();
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Print the name of the collided object in the console
-        Debug.Log("Collided with " + collision.gameObject.name);
+        if (other.tag == "Player")
+        { 
+            unroundedPosition = originalPos;
+        }
+
     }
 
     private void MoveOne()
