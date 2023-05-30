@@ -7,14 +7,19 @@ public class SnakeScript : MonoBehaviour
 
     private Vector2 _direction = Vector2.up;
     private Vector3 unroundedPosition;
-    private Vector3 originalPos;
+
+    private Vector3 originalPosition;
+
+    private List<Transform> _segments;
+
+    public Transform segmentPrefab;
+
     public float speed;
 
     public void Start()
     {
          Time.fixedDeltaTime = 0.02f;
-          unroundedPosition = transform.position;
-         originalPos = transform.position;
+         unroundedPosition = transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -43,13 +48,31 @@ public class SnakeScript : MonoBehaviour
         MoveOne();
     }
 
+    private void Grow()
+    {
+        Transform segment = Instantiate(this.segmentPrefab);
+
+        _segments.Add(segment);
+        segment.position = _segments[_segments.Count - 1].position;
+    }
+
+
+    private void ResetGame()
+    {
+
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Print the name of the collided object in the console
-        if (other.tag == "Player")
-        { 
-            unroundedPosition = originalPos;
+        if (other.tag == "Food")
+        {
+            Grow();
+        }
+
+        if (other.tag == "Obsticle")
+        {
+            ResetGame();
         }
 
     }
