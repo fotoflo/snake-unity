@@ -15,7 +15,8 @@ public class FoodScript : MonoBehaviour
     {
         Bounds bounds = this.gridArea.bounds;
 
-        float x = Random.Range(bounds.min.x, bounds.max.x);
+        //float x = Random.Range(bounds.min.x, bounds.max.x);
+        float x = this.transform.position.x;
         float y = Random.Range(bounds.min.y, bounds.max.y);
 
         this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round( y), 0);
