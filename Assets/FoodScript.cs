@@ -13,28 +13,46 @@ public class FoodScript : MonoBehaviour
     // Update is called once per frame
     private void RandomizePosition()
     {
-        Debug.Log("RandomizePosition");
         Bounds bounds = this.gridArea.bounds;
 
         bool positionIsFree = false;
         Vector3 newPosition = Vector3.zero;
 
-        while (!positionIsFree)
-        {
-            float x = Random.Range(bounds.min.x, bounds.max.x);
-            float y = Random.Range(bounds.min.y, bounds.max.y);
+        float width = bounds.size.x;
+        float height = bounds.size.y;
+        int totalSpaces = Mathf.RoundToInt(width) * Mathf.RoundToInt(height);
+        
+        int maxAttempts = totalSpaces;
 
-            newPosition = new Vector3(Mathf.Round(x), Mathf.Round(y), 0);
+        while (!positionIsFree && maxAttempts > 0)
+        {
+            newPosition = randomRange();
 
             // The second parameter is the radius of the circle used for overlap testing. Adjust as needed.
             LayerMask mask = LayerMask.GetMask("Player", "Obstacle");
-            if (Physics2D.OverlapCircle(newPosition, 0.5f, mask) == null){
+            if (checkPositionForOverlap(newPosition)){
                 positionIsFree = true;
+            } else {
+                maxAttempts--;
             }
         }
 
         // Only update the position when a free position is found
         this.transform.position = newPosition;
+    }
+
+    private Vector3 randomRange(){
+        Bounds bounds = this.gridArea.bounds;
+        float x = Random.Range(bounds.min.x, bounds.max.x);
+        float y = Random.Range(bounds.min.y, bounds.max.y);
+        return new Vector3(Mathf.Round(x), Mathf.Round(y), 0);
+    }
+
+    private bool checkPositionForOverlap(Vector3 position)
+    {
+        // The second parameter is the radius of the circle used for overlap testing. Adjust as needed.
+        LayerMask mask = LayerMask.GetMask("Player", "Obstacle");
+        return Physics2D.OverlapCircle(position, 0.5f, mask) == null;
     }
 
 
