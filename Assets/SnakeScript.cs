@@ -53,28 +53,38 @@ public class SnakeScript : MonoBehaviour
     private void Grow()
     {
         Transform segment = Instantiate(this.segmentPrefab);
-        
+
         segment.position = _segments[_segments.Count - 1].position;
         _segments.Add(segment);
     }
 
 
-    private void ResetGame()
+    private void ResetState()
     {
+        Debug.Log("ResetState");
 
+        for(int i = 1; i < _segments.Count; i++)
+        {
+            Destroy(_segments[i].gameObject);
+        }
+
+        _segments.Clear();
+        _segments.Add(this.transform);
+        this.transform.position = Vector3.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Print the name of the collided object in the console
+        // Print the name of the collided object in the console'
+
+        Debug.Log("OnTriggerEnter2D: " + other.name);
+
         if (other.tag == "Food")
         {
             Grow();
-        }
-
-        if (other.tag == "Obsticle")
+        } else if (other.tag == "Obstacle")
         {
-            ResetGame();
+            ResetState();
         }
 
     }
