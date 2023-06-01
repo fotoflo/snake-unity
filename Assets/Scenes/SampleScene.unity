@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 625300694}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 1143541118}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -834,6 +834,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 7722181602991545806, guid: 1aaa4bf8e2ecf4bc884a65c04b76e0e1, type: 3}
   speed: 0.15
+--- !u!50 &1545195015
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545195005}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1593386564
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +875,7 @@ GameObject:
   - component: {fileID: 1593386565}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1006,7 +1033,7 @@ GameObject:
   - component: {fileID: 1633223383}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,4 +1252,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7722181602991545905, guid: 1aaa4bf8e2ecf4bc884a65c04b76e0e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1545195011}
+    - targetCorrespondingSourceObject: {fileID: 7722181602991545905, guid: 1aaa4bf8e2ecf4bc884a65c04b76e0e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545195015}
   m_SourcePrefab: {fileID: 100100000, guid: 1aaa4bf8e2ecf4bc884a65c04b76e0e1, type: 3}
