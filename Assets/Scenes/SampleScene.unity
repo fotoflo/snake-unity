@@ -832,6 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b31a9b64ba954607898f01bedd63ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodScript: {fileID: 1400232127}
   segmentPrefab: {fileID: 7722181602991545806, guid: 1aaa4bf8e2ecf4bc884a65c04b76e0e1, type: 3}
   speed: 0.15
   intialSize: 4
