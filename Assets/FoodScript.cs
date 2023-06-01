@@ -2,16 +2,9 @@ using UnityEngine;
 
 public class FoodScript : MonoBehaviour
 {
+    public BoxCollider2D gridArea;   
 
-    public BoxCollider2D gridArea;
-    // Start is called before the first frame update
-    void Start()
-    {
-        RandomizePosition();
-    }
-
-    // Update is called once per frame
-    private void RandomizePosition()
+    public void RandomizePosition()
     {
         int maxAttempts = getTotalSpaces();
         bool positionIsFree = false;       

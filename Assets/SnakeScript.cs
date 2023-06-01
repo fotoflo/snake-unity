@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SnakeScript : MonoBehaviour
 {
+    public FoodScript foodScript;
 
     private Vector2 _direction = Vector2.up;
     private Vector2 input;
@@ -18,6 +19,7 @@ public class SnakeScript : MonoBehaviour
     public float speed;
 
     public int intialSize = 4;
+
 
     public void Start()
     {
@@ -89,6 +91,8 @@ public class SnakeScript : MonoBehaviour
         }
 
         this.transform.position = Vector3.zero;
+
+        foodScript.RandomizePosition();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
