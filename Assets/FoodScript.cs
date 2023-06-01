@@ -16,12 +16,27 @@ public class FoodScript : MonoBehaviour
         Debug.Log("RandomizePosition");
         Bounds bounds = this.gridArea.bounds;
 
-        //float x = Random.Range(bounds.min.x, bounds.max.x);
-        float x = this.transform.position.x;
-        float y = Random.Range(bounds.min.y, bounds.max.y);
+        bool positionIsFree = false;
+        Vector3 newPosition = Vector3.zero;
 
-        this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round( y), 0);
+        while (!positionIsFree)
+        {
+            float x = Random.Range(bounds.min.x, bounds.max.x);
+            float y = Random.Range(bounds.min.y, bounds.max.y);
+
+            newPosition = new Vector3(Mathf.Round(x), Mathf.Round(y), 0);
+
+            // The second parameter is the radius of the circle used for overlap testing. Adjust as needed.
+            LayerMask mask = LayerMask.GetMask("Player", "Obstacle");
+            if (Physics2D.OverlapCircle(newPosition, 0.5f, mask) == null){
+                positionIsFree = true;
+            }
+        }
+
+        // Only update the position when a free position is found
+        this.transform.position = newPosition;
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
