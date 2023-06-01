@@ -13,6 +13,7 @@ public class FoodScript : MonoBehaviour
     // Update is called once per frame
     private void RandomizePosition()
     {
+        Debug.Log("RandomizePosition");
         Bounds bounds = this.gridArea.bounds;
 
         //float x = Random.Range(bounds.min.x, bounds.max.x);

@@ -20,6 +20,7 @@ public class SnakeScript : MonoBehaviour
     {
          Time.fixedDeltaTime = 0.02f;
          unroundedPosition = transform.position;
+         _segments = new List<Transform>();
     }
     // Update is called once per frame
     void Update()
